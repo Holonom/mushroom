@@ -49,6 +49,7 @@
      <Compile Include="Assets\Background\Parallexing.cs" />
      <Compile Include="Assets\Background\Tiling.cs" />
      <Compile Include="Assets\Controller\Highscore.cs" />
+     <Compile Include="Assets\Meteor\HitAndDestroy.cs" />
      <Compile Include="Assets\Platforms\TilingPlatforms.cs" />
      <Compile Include="Assets\Player\OnFallDestroy.cs" />
      <Compile Include="Assets\Sample Assets\2D\Scripts\Camera2DFollow.cs" />

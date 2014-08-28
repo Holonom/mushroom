@@ -11,8 +11,8 @@ public class TilingPlatforms : MonoBehaviour {
 
 	private List<float> allCreated;
 
-	private float camMinX = 0;
-	private float camMaxX = 0;
+	//private float camMinX = 0;
+	//private float camMaxX = 0;
 
 	private float camX = 0;
 	//private int index = 0;
@@ -31,9 +31,9 @@ public class TilingPlatforms : MonoBehaviour {
 		allCreated.Add(0);
 		offsetX = cam.transform.position.x;
 
-		var dist = (transform.position - cam.transform.position).z;
-		camMinX = cam.ViewportToWorldPoint(new Vector3(0,0,dist)).x;
-		camMaxX = cam.ViewportToWorldPoint(new Vector3(1,0,dist)).x;
+		//var dist = (transform.position - cam.transform.position).z;
+		//camMinX = cam.ViewportToWorldPoint(new Vector3(0,0,dist)).x;
+		//camMaxX = cam.ViewportToWorldPoint(new Vector3(1,0,dist)).x;
 
 		//InvokeRepeating("MakeNewBody", 1f, 3f);
 	}
@@ -52,9 +52,9 @@ public class TilingPlatforms : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (isRoot) {
-			var dist = (transform.position - cam.transform.position).z;
-			var leftBorder = cam.ViewportToWorldPoint (new Vector3 (0, 0, dist)).x;
-			var rightBorder = cam.ViewportToWorldPoint (new Vector3 (1, 0, dist)).x;
+			//var dist = (transform.position - cam.transform.position).z;
+			//var leftBorder = cam.ViewportToWorldPoint (new Vector3 (0, 0, dist)).x;
+			//var rightBorder = cam.ViewportToWorldPoint (new Vector3 (1, 0, dist)).x;
 
 
 			if((cam.transform.position.x-camX)>5){

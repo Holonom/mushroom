@@ -43,6 +43,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 	public void Move(float move, bool crouch, bool jump)
 	{
+		var dist = (rigidbody2D.transform.position - Camera.main.transform.position).z;
+		var leftBorder = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, dist)).x;
+
+		//Debug.Log (leftBorder);
+		//Debug.Log ("Postiton"+rigidbody2D.transform.position.x);
+
 
 
 		// If crouching, check to see if the character can stand up
@@ -65,8 +71,20 @@ public class PlatformerCharacter2D : MonoBehaviour
 			// The Speed animator parameter is set to the absolute value of the horizontal input.
 			anim.SetFloat("Speed", Mathf.Abs(move));
 
-			// Move the character
-			rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
+			//Debug.Log ("left:"+(rigidbody2D.transform.position.x-leftBorder));
+			if ((rigidbody2D.transform.position.x-leftBorder)>15) {
+				// Move the character
+				rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
+			}else{
+				if(move > 0){
+					Debug.Log ("move:"+move);
+
+					// Move the character
+					rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
+				}else{
+					Debug.Log ("Do not Move");
+				}
+			}
 			
 			// If the input is moving the player right and the player is facing left...
 			if(move > 0 && !facingRight)
@@ -82,7 +100,12 @@ public class PlatformerCharacter2D : MonoBehaviour
         if (grounded && jump) {
             // Add a vertical force to the player.
             anim.SetBool("Ground", false);
-            rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+			if ((rigidbody2D.transform.position.x-leftBorder)>15) {
+				rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+			}else{
+				rigidbody2D.AddForce(new Vector2(0f, 0f));
+			}
+
         }
 	}
 

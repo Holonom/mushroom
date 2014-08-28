@@ -38,9 +38,10 @@ public class Camera2DFollow : MonoBehaviour {
 		
 		Vector3 aheadTargetPos = target.position + lookAheadPos + Vector3.forward * offsetZ;
 		Vector3 newPos = Vector3.SmoothDamp(transform.position, aheadTargetPos, ref currentVelocity, damping);
-		
-		transform.position = newPos;
-		
-		lastTargetPosition = target.position;		
+
+		if (newPos.x-lastTargetPosition.x <= 1) {
+			transform.position = newPos;
+		}
+		lastTargetPosition = target.position;
 	}
 }
